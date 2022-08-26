@@ -1,7 +1,23 @@
-const inputs = document.querySelectorAll('input');
+import { State } from './lib/State';
 
-for (let input of inputs) {
-  input.addEventListener('change', () => {
-    localStorage.setItem('lastname', input.value);
-  });
-}
+const state = new State('input');
+
+state.get();
+// // ---------------------------
+// // Proof of Concept
+// // ---------------------------
+// const inputs = document.querySelectorAll('input');
+
+// inputs.forEach((input: HTMLInputElement, index: number) => {
+//   input.addEventListener('change', () => {
+//     localStorage.setItem(`input${index}`, input.value);
+//   });
+// });
+
+// // Check if the values exsists
+// inputs.forEach((input: HTMLInputElement, index: number) => {
+//   const localValue = localStorage.getItem(`input${index}`);
+//   if (localValue) {
+//     input.value = localValue;
+//   }
+// });
