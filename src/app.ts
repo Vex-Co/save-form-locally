@@ -8,7 +8,7 @@ export class App {
 
   constructor() {
     this.render();
-    this.setOnChangeListners((ev) => {
+    this.setOnChangeListners((_) => {
       this.setLocalValues();
     });
   }
