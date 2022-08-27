@@ -1,54 +1,19 @@
-interface dataInterface {
-  [key: string]: string;
-}
+import { LocalStorage } from './lib/LocalStorage';
+import { UI } from './lib/UI';
 
 export class App {
-  private inputs: NodeListOf<HTMLInputElement> =
-    document.querySelectorAll('input')!;
+  ui = new UI('input');
+  localStorage = new LocalStorage();
 
   constructor() {
-    this.render();
-    this.setOnChangeListners(() => {
-      this.setLocalValues();
+    const localData = this.localStorage.get('input', this.ui.getElementCount());
+
+    this.ui.render(localData);
+
+    this.ui.setOnChangeListners(() => {
+      const inputData = this.ui.getInputData();
+      this.localStorage.store(inputData);
     });
-  }
-
-  setOnChangeListners(callback: (ev?: Event) => void) {
-    this.inputs.forEach((input: HTMLInputElement) => {
-      input.addEventListener('change', callback);
-    });
-  }
-
-  render() {
-    const data = this.getLocalValues();
-    this.inputs.forEach((input: HTMLInputElement, index: number) => {
-      input.value = data[`input${index}`];
-    });
-  }
-
-  setLocalValues() {
-    const inputs: dataInterface = this.getInputValues();
-
-    for (let key in inputs) {
-      localStorage[key] = inputs[key];
-    }
-  }
-  getLocalValues() {
-    const data: dataInterface = {};
-
-    this.inputs.forEach((_: HTMLInputElement, index: number) => {
-      data[`input${index}`] = localStorage[`input${index}`];
-    });
-
-    return data;
-  }
-  getInputValues(): dataInterface {
-    const data: dataInterface = {};
-
-    this.inputs.forEach((input: HTMLInputElement, index: number) => {
-      data[`input${index}`] = input.value;
-    });
-    return data;
   }
 }
 
