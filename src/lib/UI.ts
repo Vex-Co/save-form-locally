@@ -1,11 +1,8 @@
 import { dataInterface } from './interfaces/dataInterface';
 
 export class UI {
-  private elements: NodeListOf<HTMLInputElement>;
-
-  constructor(selector: string) {
-    this.elements = document.querySelectorAll(selector);
-  }
+  private elements = document.querySelectorAll('input');
+  private resetBtn: HTMLButtonElement = document.querySelector('#reset-btn')!;
 
   getElementCount(): number {
     return this.elements.length;
@@ -14,13 +11,18 @@ export class UI {
   // Render UI with the help of data.
   render(data: dataInterface): void {
     this.elements.forEach((input: HTMLInputElement, index: number) => {
-      input.value = data[`input${index}`];
+      if (data[`input${index}`]) {
+        input.value = data[`input${index}`];
+      }
     });
   }
   setOnChangeListners(callback: (ev?: Event) => void): void {
     this.elements.forEach((input: HTMLInputElement) => {
       input.addEventListener('change', callback);
     });
+  }
+  setOnClickListner(callback: (ev?: Event) => void): void {
+    this.resetBtn.addEventListener('click', callback);
   }
   getInputData(): dataInterface {
     const data: dataInterface = {};

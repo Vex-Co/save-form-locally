@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "tsc -p src/ -w & vite",
+    "dev": "tsc -p ./src/ -w",
     "compile": "tsc -p src/"
   },
   "devDependencies": {
