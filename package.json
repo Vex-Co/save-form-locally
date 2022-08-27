@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "vite"
+    "start": "tsc -p src/ -w & vite"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
