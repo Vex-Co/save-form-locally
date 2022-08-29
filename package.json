@@ -1,6 +1,6 @@
 {
   "name": "save-form-locally",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is used to save the form locally and restore it even when the browser is closed.",
   "main": "./src/index.js",
   "module": "./src/index.js",
