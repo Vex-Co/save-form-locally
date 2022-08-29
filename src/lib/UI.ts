@@ -17,12 +17,20 @@ export class UI {
     });
   }
   setOnChangeListners(callback: (ev?: Event) => void): void {
-    this.elements.forEach((input: HTMLInputElement) => {
-      input.addEventListener('change', callback);
-    });
+    try {
+      this.elements.forEach((input: HTMLInputElement) => {
+        input.addEventListener('change', callback);
+      });
+    } catch (err) {
+      console.log('Please Add an input field to use features of this library.');
+    }
   }
   setOnClickListner(callback: (ev?: Event) => void): void {
-    this.resetBtn.addEventListener('click', callback);
+    try {
+      this.resetBtn.addEventListener('click', callback);
+    } catch (err) {
+      console.log('Please Add an reset button to reset the saved form.');
+    }
   }
   getInputData(): dataInterface {
     const data: dataInterface = {};

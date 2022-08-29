@@ -1,4 +1,14 @@
 {
+  "name": "save-form-locally",
+  "version": "0.0.2",
+  "description": "This is used to save the form locally and restore it even when the browser is closed.",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "files": [
+    "dist"
+  ],
+  "types":  "./dist/index.d.ts",
+
   "scripts": {
     "dev": "tsc -p ./src/ -w",
     "compile": "tsc -p src/"
@@ -9,5 +19,21 @@
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.2",
     "vite": "^3.0.9"
-  }
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vex-Co/save-input-state-local.git"
+  },
+  "keywords": [
+    "local-form-save",
+    "save-input-locally",
+    "save-form-even-browser-is-closed"
+  ],
+  "author": "Zafeer Hafeez <iivexii@pm.me> (IIvexII)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vex-Co/save-input-state-local/issues"
+  },
+  "homepage": "https://github.com/Vex-Co/save-input-state-local#readme"
 }

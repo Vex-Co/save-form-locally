@@ -6,13 +6,16 @@ export class SaveInputLocally {
   static localStorage = new LocalStorage();
 
   static start() {
+    // Get the local data saved in browser.
     const localData = SaveInputLocally.localStorage.get(
       'input',
       SaveInputLocally.ui.getElementCount()
     );
 
+    // Render the ui with the localData
     SaveInputLocally.ui.render(localData);
 
+    // On change in input values.
     SaveInputLocally.ui.setOnChangeListners(() => {
       const inputData = SaveInputLocally.ui.getInputData();
       SaveInputLocally.localStorage.store(inputData);
